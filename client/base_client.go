@@ -27,16 +27,17 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
+	"go.uber.org/zap"
+	"google.golang.org/grpc"
+
 	"github.com/tikv/pd/client/errs"
 	"github.com/tikv/pd/client/grpcutil"
 	"github.com/tikv/pd/client/tlsutil"
-	"go.uber.org/zap"
-	"google.golang.org/grpc"
 )
 
 const (
 	globalDCLocation     = "global"
-	memberUpdateInterval = time.Minute
+	memberUpdateInterval = 3 * time.Second
 )
 
 // baseClient is a basic client for all other complex client.
