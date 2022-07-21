@@ -17,7 +17,7 @@ package statistics
 import (
 	"fmt"
 
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // StoreHotPeersInfos is used to get human-readable description for hot regions.

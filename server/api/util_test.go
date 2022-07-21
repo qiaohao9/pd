@@ -20,7 +20,7 @@ import (
 	"net/http/httptest"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/pkg/apiutil"
+	"github.com/qiaohao9/pd/pkg/apiutil"
 	"github.com/unrolled/render"
 )
 

@@ -21,10 +21,10 @@ import (
 	"time"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/versioninfo"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/versioninfo"
 )
 
 var _ = Suite(&testConfigSuite{})

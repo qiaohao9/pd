@@ -15,9 +15,9 @@
 package schedule
 
 import (
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/statistics"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/statistics"
 )
 
 // Cluster provides an overview of a cluster's regions distribution.

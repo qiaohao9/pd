@@ -23,9 +23,9 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/pkg/grpcutil"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage"
+	"github.com/qiaohao9/pd/pkg/grpcutil"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage"
 )
 
 var _ = Suite(&testClientSuite{})

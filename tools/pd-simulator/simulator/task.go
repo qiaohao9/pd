@@ -21,8 +21,8 @@ import (
 	"github.com/pingcap/kvproto/pkg/eraftpb"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/tools/pd-analysis/analysis"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/tools/pd-analysis/analysis"
 )
 
 // Task running in node.

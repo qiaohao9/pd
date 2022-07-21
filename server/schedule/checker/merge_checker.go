@@ -20,16 +20,16 @@ import (
 	"time"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/cache"
-	"github.com/tikv/pd/pkg/codec"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/logutil"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule"
-	"github.com/tikv/pd/server/schedule/labeler"
-	"github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/pkg/cache"
+	"github.com/qiaohao9/pd/pkg/codec"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/logutil"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule"
+	"github.com/qiaohao9/pd/server/schedule/labeler"
+	"github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 )
 
 const maxTargetRegionSize = 500

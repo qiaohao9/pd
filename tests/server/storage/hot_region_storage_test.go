@@ -22,13 +22,13 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/statistics"
-	"github.com/tikv/pd/server/storage"
-	"github.com/tikv/pd/tests"
-	"github.com/tikv/pd/tests/pdctl"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/statistics"
+	"github.com/qiaohao9/pd/server/storage"
+	"github.com/qiaohao9/pd/tests"
+	"github.com/qiaohao9/pd/tests/pdctl"
 )
 
 func Test(t *testing.T) {

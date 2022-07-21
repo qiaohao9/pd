@@ -21,8 +21,8 @@ import (
 	"sort"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/schedule/labeler"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/schedule/labeler"
 )
 
 var _ = Suite(&testRegionLabelSuite{})

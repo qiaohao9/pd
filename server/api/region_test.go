@@ -28,9 +28,9 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 )
 
 var _ = Suite(&testRegionStructSuite{})

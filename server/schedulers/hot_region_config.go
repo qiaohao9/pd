@@ -26,11 +26,11 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/slice"
-	"github.com/tikv/pd/server/schedule"
-	"github.com/tikv/pd/server/statistics"
-	"github.com/tikv/pd/server/storage/endpoint"
-	"github.com/tikv/pd/server/versioninfo"
+	"github.com/qiaohao9/pd/pkg/slice"
+	"github.com/qiaohao9/pd/server/schedule"
+	"github.com/qiaohao9/pd/server/statistics"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/server/versioninfo"
 	"github.com/unrolled/render"
 	"go.uber.org/zap"
 )

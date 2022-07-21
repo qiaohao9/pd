@@ -26,7 +26,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server/storage"
+	"github.com/qiaohao9/pd/server/storage"
 )
 
 func Test(t *testing.T) {

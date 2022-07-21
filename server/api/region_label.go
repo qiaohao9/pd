@@ -20,10 +20,10 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/tikv/pd/pkg/apiutil"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/schedule/labeler"
+	"github.com/qiaohao9/pd/pkg/apiutil"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/schedule/labeler"
 	"github.com/unrolled/render"
 )
 

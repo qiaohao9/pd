@@ -19,7 +19,7 @@ import (
 	"sync"
 
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/pkg/movingaverage"
+	"github.com/qiaohao9/pd/pkg/movingaverage"
 )
 
 type storeStats struct {

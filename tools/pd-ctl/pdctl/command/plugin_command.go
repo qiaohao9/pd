@@ -20,7 +20,7 @@ import (
 	"net/http"
 
 	"github.com/spf13/cobra"
-	"github.com/tikv/pd/server/cluster"
+	"github.com/qiaohao9/pd/server/cluster"
 )
 
 var (

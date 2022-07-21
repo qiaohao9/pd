@@ -29,12 +29,12 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/apiutil/serverapi"
-	"github.com/tikv/pd/pkg/testutil"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/tests"
+	"github.com/qiaohao9/pd/pkg/apiutil/serverapi"
+	"github.com/qiaohao9/pd/pkg/testutil"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/tests"
 	"go.uber.org/goleak"
 )
 

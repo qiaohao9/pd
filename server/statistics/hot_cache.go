@@ -18,8 +18,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/tikv/pd/pkg/movingaverage"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/pkg/movingaverage"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // Denoising is an option to calculate flow base on the real heartbeats. Should

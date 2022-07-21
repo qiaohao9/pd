@@ -21,11 +21,11 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/slice"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/core/storelimit"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/pkg/slice"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 	"go.uber.org/zap"
 )
 

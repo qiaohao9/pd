@@ -22,8 +22,8 @@ import (
 	"github.com/pingcap/log"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/push"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/typeutil"
 )
 
 const zeroDuration = time.Duration(0)

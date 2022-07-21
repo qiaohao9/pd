@@ -24,11 +24,11 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	pb "github.com/pingcap/kvproto/pkg/replication_modepb"
-	"github.com/tikv/pd/pkg/mock/mockcluster"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage"
+	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage"
 )
 
 func TestReplicationMode(t *testing.T) {

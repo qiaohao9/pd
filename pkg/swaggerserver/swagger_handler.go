@@ -21,7 +21,7 @@ import (
 	"net/http"
 
 	httpSwagger "github.com/swaggo/http-swagger"
-	_ "github.com/tikv/pd/docs/swagger"
+	_ "github.com/qiaohao9/pd/docs/swagger"
 )
 
 func handler() http.Handler {

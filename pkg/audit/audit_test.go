@@ -28,7 +28,7 @@ import (
 	"github.com/pingcap/log"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/tikv/pd/pkg/requestutil"
+	"github.com/qiaohao9/pd/pkg/requestutil"
 )
 
 func Test(t *testing.T) {

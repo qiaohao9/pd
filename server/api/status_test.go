@@ -19,7 +19,7 @@ import (
 	"io"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server/versioninfo"
+	"github.com/qiaohao9/pd/server/versioninfo"
 )
 
 var _ = Suite(&testStatusAPISuite{})

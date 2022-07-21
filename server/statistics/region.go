@@ -15,7 +15,7 @@
 package statistics
 
 import (
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // RegionStats records a list of regions' statistics and distribution status.

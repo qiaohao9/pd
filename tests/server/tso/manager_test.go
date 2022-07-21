@@ -24,12 +24,12 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
-	"github.com/tikv/pd/pkg/etcdutil"
-	"github.com/tikv/pd/pkg/testutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/tso"
-	"github.com/tikv/pd/tests"
+	"github.com/qiaohao9/pd/pkg/etcdutil"
+	"github.com/qiaohao9/pd/pkg/testutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/tso"
+	"github.com/qiaohao9/pd/tests"
 	"go.etcd.io/etcd/clientv3"
 )
 

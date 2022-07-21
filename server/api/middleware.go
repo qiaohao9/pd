@@ -22,11 +22,11 @@ import (
 
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/audit"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/requestutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/cluster"
+	"github.com/qiaohao9/pd/pkg/audit"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/requestutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/cluster"
 	"github.com/unrolled/render"
 	"github.com/urfave/negroni"
 )

@@ -20,7 +20,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/tikv/pd/pkg/etcdutil"
+	"github.com/qiaohao9/pd/pkg/etcdutil"
 	"go.etcd.io/etcd/clientv3"
 )
 

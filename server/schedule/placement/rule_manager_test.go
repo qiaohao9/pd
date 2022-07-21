@@ -19,10 +19,10 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/pkg/codec"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage"
-	"github.com/tikv/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/pkg/codec"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
 )
 
 var _ = Suite(&testManagerSuite{})

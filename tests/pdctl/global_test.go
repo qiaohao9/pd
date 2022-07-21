@@ -22,10 +22,10 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/apiutil"
-	"github.com/tikv/pd/pkg/testutil"
-	"github.com/tikv/pd/server"
-	cmd "github.com/tikv/pd/tools/pd-ctl/pdctl"
+	"github.com/qiaohao9/pd/pkg/apiutil"
+	"github.com/qiaohao9/pd/pkg/testutil"
+	"github.com/qiaohao9/pd/server"
+	cmd "github.com/qiaohao9/pd/tools/pd-ctl/pdctl"
 	"go.uber.org/zap"
 )
 

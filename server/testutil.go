@@ -23,14 +23,14 @@ import (
 	"time"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/assertutil"
-	"github.com/tikv/pd/pkg/tempurl"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server/config"
+	"github.com/qiaohao9/pd/pkg/assertutil"
+	"github.com/qiaohao9/pd/pkg/tempurl"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server/config"
 	"go.etcd.io/etcd/embed"
 
 	// Register schedulers
-	_ "github.com/tikv/pd/server/schedulers"
+	_ "github.com/qiaohao9/pd/server/schedulers"
 )
 
 // CleanupFunc closes test pd server(s) and deletes any files left behind.

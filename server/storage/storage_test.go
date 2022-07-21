@@ -26,8 +26,8 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
 	"go.etcd.io/etcd/clientv3"
 )
 

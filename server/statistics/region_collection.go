@@ -18,9 +18,9 @@ import (
 	"time"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 )
 
 // RegionStatisticType represents the type of the region's status.

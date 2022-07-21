@@ -29,7 +29,7 @@ import (
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/kvproto/pkg/replication_modepb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/logutil"
+	"github.com/qiaohao9/pd/pkg/logutil"
 	"go.uber.org/zap"
 )
 

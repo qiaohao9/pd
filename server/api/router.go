@@ -21,8 +21,8 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/pingcap/failpoint"
-	"github.com/tikv/pd/pkg/audit"
-	"github.com/tikv/pd/server"
+	"github.com/qiaohao9/pd/pkg/audit"
+	"github.com/qiaohao9/pd/server"
 	"github.com/unrolled/render"
 	"github.com/urfave/negroni"
 )

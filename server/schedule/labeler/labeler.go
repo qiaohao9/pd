@@ -20,10 +20,10 @@ import (
 	"sync"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule/rangelist"
-	"github.com/tikv/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule/rangelist"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
 	"go.uber.org/zap"
 )
 

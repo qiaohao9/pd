@@ -18,12 +18,12 @@ import (
 	"net/http"
 
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule"
-	"github.com/tikv/pd/server/schedule/filter"
-	"github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule"
+	"github.com/qiaohao9/pd/server/schedule/filter"
+	"github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
 )
 
 const (

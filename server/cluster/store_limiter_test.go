@@ -17,8 +17,8 @@ package cluster
 import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core/storelimit"
 )
 
 var _ = Suite(&testStoreLimiterSuite{})

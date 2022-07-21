@@ -20,9 +20,9 @@ import (
 	"time"
 
 	"github.com/BurntSushi/toml"
-	"github.com/tikv/pd/pkg/tempurl"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server/config"
+	"github.com/qiaohao9/pd/pkg/tempurl"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server/config"
 )
 
 const (

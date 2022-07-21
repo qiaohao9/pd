@@ -23,7 +23,7 @@ import (
 	"github.com/pingcap/errors"
 	"github.com/pingcap/kvproto/pkg/encryptionpb"
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/errs"
 )
 
 // processRegionKeys encrypt or decrypt the start key and end key of the region in-place,

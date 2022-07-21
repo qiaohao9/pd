@@ -24,10 +24,10 @@ import (
 	"github.com/pingcap/tidb-dashboard/pkg/apiserver"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/logutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/cluster"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/logutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/cluster"
 )
 
 var (

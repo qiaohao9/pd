@@ -20,8 +20,8 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/movingaverage"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/pkg/movingaverage"
+	"github.com/qiaohao9/pd/server/core"
 	"go.uber.org/zap"
 )
 

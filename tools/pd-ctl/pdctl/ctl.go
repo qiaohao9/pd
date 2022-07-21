@@ -24,8 +24,8 @@ import (
 	"github.com/mattn/go-shellwords"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/tools/pd-ctl/pdctl/command"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/tools/pd-ctl/pdctl/command"
 )
 
 func init() {

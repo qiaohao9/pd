@@ -21,7 +21,7 @@ import (
 	"time"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/errs"
 )
 
 var (

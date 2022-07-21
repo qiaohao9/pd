@@ -19,8 +19,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server"
 	"github.com/unrolled/render"
 )
 

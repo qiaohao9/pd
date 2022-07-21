@@ -17,7 +17,7 @@ package schedule
 import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // RangeCluster isolates the cluster by range.

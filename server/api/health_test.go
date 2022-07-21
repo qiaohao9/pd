@@ -20,8 +20,8 @@ import (
 	"strings"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
 )
 
 var _ = Suite(&testHealthAPISuite{})

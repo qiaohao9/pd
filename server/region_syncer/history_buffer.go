@@ -19,9 +19,9 @@ import (
 	"sync"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage/kv"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage/kv"
 	"go.uber.org/zap"
 )
 

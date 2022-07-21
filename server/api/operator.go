@@ -20,11 +20,11 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/tikv/pd/pkg/apiutil"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/pkg/apiutil"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 	"github.com/unrolled/render"
 )
 

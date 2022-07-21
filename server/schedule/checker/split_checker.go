@@ -17,12 +17,12 @@ package checker
 import (
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/schedule"
-	"github.com/tikv/pd/server/schedule/labeler"
-	"github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/schedule"
+	"github.com/qiaohao9/pd/server/schedule/labeler"
+	"github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 )
 
 // SplitChecker splits regions when the key range spans across rule/label boundary.

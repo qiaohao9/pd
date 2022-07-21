@@ -20,7 +20,7 @@ import (
 	"sort"
 
 	"github.com/pingcap/errors"
-	"github.com/tikv/pd/pkg/codec"
+	"github.com/qiaohao9/pd/pkg/codec"
 )
 
 const (

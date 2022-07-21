@@ -20,10 +20,10 @@ import (
 	"sync/atomic"
 
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/encryptionkm"
-	"github.com/tikv/pd/server/storage/endpoint"
-	"github.com/tikv/pd/server/storage/kv"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/encryptionkm"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/server/storage/kv"
 	"go.etcd.io/etcd/clientv3"
 )
 

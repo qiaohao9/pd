@@ -24,7 +24,7 @@ import (
 
 	"github.com/pingcap/errors"
 	"github.com/spf13/cobra"
-	"github.com/tikv/pd/server/storage"
+	"github.com/qiaohao9/pd/server/storage"
 )
 
 const (

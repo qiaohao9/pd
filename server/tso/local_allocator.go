@@ -22,10 +22,10 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/tsoutil"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server/election"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/tsoutil"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server/election"
 	"go.etcd.io/etcd/clientv3"
 	"go.uber.org/zap"
 )

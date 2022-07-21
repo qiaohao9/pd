@@ -25,9 +25,9 @@ import (
 	"path"
 	"strconv"
 
-	"github.com/tikv/pd/pkg/etcdutil"
-	"github.com/tikv/pd/pkg/typeutil"
-	"github.com/tikv/pd/server/config"
+	"github.com/qiaohao9/pd/pkg/etcdutil"
+	"github.com/qiaohao9/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/server/config"
 	"go.etcd.io/etcd/clientv3"
 )
 

@@ -24,7 +24,7 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/spf13/cobra"
-	"github.com/tikv/pd/server/api"
+	"github.com/qiaohao9/pd/server/api"
 )
 
 var (

@@ -15,8 +15,8 @@
 package operator
 
 import (
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/core/storelimit"
 )
 
 // OpInfluence records the influence of the cluster.

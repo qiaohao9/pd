@@ -18,8 +18,8 @@ import (
 	"math/rand"
 	"sort"
 
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // StoreCandidates wraps store list and provide utilities to select source or

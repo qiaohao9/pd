@@ -25,12 +25,12 @@ import (
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/spf13/cobra"
-	"github.com/tikv/pd/pkg/assertutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/api"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/versioninfo"
-	"github.com/tikv/pd/tests"
+	"github.com/qiaohao9/pd/pkg/assertutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/api"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/versioninfo"
+	"github.com/qiaohao9/pd/tests"
 )
 
 // ExecuteCommand is used for test purpose.

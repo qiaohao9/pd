@@ -25,8 +25,8 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/pkg/mock/mockid"
-	"github.com/tikv/pd/server/id"
+	"github.com/qiaohao9/pd/pkg/mock/mockid"
+	"github.com/qiaohao9/pd/server/id"
 )
 
 func TestCore(t *testing.T) {

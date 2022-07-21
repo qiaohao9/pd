@@ -16,7 +16,7 @@ package simulator
 
 import (
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/tools/pd-simulator/simulator/cases"
+	"github.com/qiaohao9/pd/tools/pd-simulator/simulator/cases"
 )
 
 // Connection records the information of connection among nodes.

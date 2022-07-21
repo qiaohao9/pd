@@ -20,7 +20,7 @@ import (
 	"sync"
 
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 // RegionFit is the result of fitting a region's peers to rule list.

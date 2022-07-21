@@ -20,9 +20,9 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/tools/pd-simulator/simulator/info"
-	"github.com/tikv/pd/tools/pd-simulator/simulator/simutil"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/tools/pd-simulator/simulator/info"
+	"github.com/qiaohao9/pd/tools/pd-simulator/simulator/simutil"
 )
 
 func newHotWrite() *Case {

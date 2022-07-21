@@ -22,8 +22,8 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/tests"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/tests"
 )
 
 func Test(t *testing.T) {

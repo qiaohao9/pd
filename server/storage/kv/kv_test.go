@@ -24,7 +24,7 @@ import (
 	"testing"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/pkg/tempurl"
+	"github.com/qiaohao9/pd/pkg/tempurl"
 	"go.etcd.io/etcd/clientv3"
 	"go.etcd.io/etcd/embed"
 )

@@ -22,9 +22,9 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	_ "github.com/tikv/pd/server/schedulers"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	_ "github.com/qiaohao9/pd/server/schedulers"
 )
 
 var _ = Suite(&testScheduleSuite{})

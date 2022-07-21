@@ -17,7 +17,7 @@ package typeutil
 import (
 	"encoding/binary"
 
-	"github.com/tikv/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/errs"
 )
 
 // BytesToUint64 converts a byte slice to uint64.

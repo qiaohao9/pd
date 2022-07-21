@@ -20,8 +20,8 @@ import (
 	"strings"
 
 	"github.com/pingcap/errors"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/server/schedule/rangelist"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/server/schedule/rangelist"
 )
 
 func checkApplyRules(rules []*Rule) error {

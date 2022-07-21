@@ -15,7 +15,7 @@
 package storelimit
 
 import (
-	"github.com/tikv/pd/pkg/ratelimit"
+	"github.com/qiaohao9/pd/pkg/ratelimit"
 )
 
 const (

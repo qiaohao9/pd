@@ -19,7 +19,7 @@ import (
 	"os"
 
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/tools/pd-analysis/analysis"
+	"github.com/qiaohao9/pd/tools/pd-analysis/analysis"
 	"go.uber.org/zap"
 )
 

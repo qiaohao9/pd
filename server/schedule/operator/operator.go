@@ -24,7 +24,7 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 const (

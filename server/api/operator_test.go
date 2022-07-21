@@ -27,13 +27,13 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	"github.com/tikv/pd/pkg/mock/mockhbstream"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	pdoperator "github.com/tikv/pd/server/schedule/operator"
-	"github.com/tikv/pd/server/schedule/placement"
-	"github.com/tikv/pd/server/versioninfo"
+	"github.com/qiaohao9/pd/pkg/mock/mockhbstream"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	pdoperator "github.com/qiaohao9/pd/server/schedule/operator"
+	"github.com/qiaohao9/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/server/versioninfo"
 )
 
 var _ = Suite(&testOperatorSuite{})

@@ -23,9 +23,9 @@ import (
 	"time"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/tests"
-	"github.com/tikv/pd/tools/pd-backup/pdbackup"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/tests"
+	"github.com/qiaohao9/pd/tools/pd-backup/pdbackup"
 	"go.etcd.io/etcd/clientv3"
 )
 

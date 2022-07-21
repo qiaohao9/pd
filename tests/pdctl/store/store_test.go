@@ -23,12 +23,12 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/api"
-	"github.com/tikv/pd/server/core/storelimit"
-	"github.com/tikv/pd/tests"
-	"github.com/tikv/pd/tests/pdctl"
-	cmd "github.com/tikv/pd/tools/pd-ctl/pdctl"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/api"
+	"github.com/qiaohao9/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/tests"
+	"github.com/qiaohao9/pd/tests/pdctl"
+	cmd "github.com/qiaohao9/pd/tools/pd-ctl/pdctl"
 )
 
 func Test(t *testing.T) {

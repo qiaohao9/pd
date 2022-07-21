@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tikv/pd/server/core"
+	"github.com/qiaohao9/pd/server/core"
 )
 
 type prepareChecker struct {

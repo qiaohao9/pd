@@ -18,8 +18,8 @@ import (
 	"time"
 
 	"github.com/pingcap/kvproto/pkg/encryptionpb"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/typeutil"
 )
 
 const (

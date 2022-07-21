@@ -18,7 +18,7 @@ import (
 	"time"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/pkg/typeutil"
+	"github.com/qiaohao9/pd/pkg/typeutil"
 )
 
 type testConfigSuite struct{}

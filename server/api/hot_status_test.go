@@ -22,10 +22,10 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/syndtr/goleveldb/leveldb"
-	"github.com/tikv/pd/server"
-	_ "github.com/tikv/pd/server/schedulers"
-	"github.com/tikv/pd/server/storage"
-	"github.com/tikv/pd/server/storage/kv"
+	"github.com/qiaohao9/pd/server"
+	_ "github.com/qiaohao9/pd/server/schedulers"
+	"github.com/qiaohao9/pd/server/storage"
+	"github.com/qiaohao9/pd/server/storage/kv"
 )
 
 var _ = Suite(&testHotStatusSuite{})

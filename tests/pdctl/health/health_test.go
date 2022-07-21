@@ -20,12 +20,12 @@ import (
 	"testing"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/api"
-	"github.com/tikv/pd/server/cluster"
-	"github.com/tikv/pd/tests"
-	"github.com/tikv/pd/tests/pdctl"
-	pdctlCmd "github.com/tikv/pd/tools/pd-ctl/pdctl"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/api"
+	"github.com/qiaohao9/pd/server/cluster"
+	"github.com/qiaohao9/pd/tests"
+	"github.com/qiaohao9/pd/tests/pdctl"
+	pdctlCmd "github.com/qiaohao9/pd/tools/pd-ctl/pdctl"
 )
 
 func Test(t *testing.T) {

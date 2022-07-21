@@ -25,16 +25,16 @@ import (
 	. "github.com/pingcap/check"
 	"go.uber.org/goleak"
 
-	"github.com/tikv/pd/pkg/dashboard"
-	"github.com/tikv/pd/pkg/testutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/tests"
-	"github.com/tikv/pd/tests/pdctl"
-	pdctlCmd "github.com/tikv/pd/tools/pd-ctl/pdctl"
+	"github.com/qiaohao9/pd/pkg/dashboard"
+	"github.com/qiaohao9/pd/pkg/testutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/tests"
+	"github.com/qiaohao9/pd/tests/pdctl"
+	pdctlCmd "github.com/qiaohao9/pd/tools/pd-ctl/pdctl"
 
 	// Register schedulers.
-	_ "github.com/tikv/pd/server/schedulers"
+	_ "github.com/qiaohao9/pd/server/schedulers"
 )
 
 func Test(t *testing.T) {

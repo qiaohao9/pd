@@ -19,8 +19,8 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core/storelimit"
 	"go.uber.org/zap"
 )
 

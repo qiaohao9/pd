@@ -18,8 +18,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/tikv/pd/pkg/apiutil/serverapi"
-	"github.com/tikv/pd/server"
+	"github.com/qiaohao9/pd/pkg/apiutil/serverapi"
+	"github.com/qiaohao9/pd/server"
 	"github.com/unrolled/render"
 	"github.com/urfave/negroni"
 )

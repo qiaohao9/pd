@@ -14,7 +14,7 @@
 
 package statistics
 
-import "github.com/tikv/pd/server/core"
+import "github.com/qiaohao9/pd/server/core"
 
 // storeCollector define the behavior of different engines of stores.
 type storeCollector interface {

@@ -18,10 +18,10 @@ import (
 	"testing"
 
 	"github.com/pingcap/kvproto/pkg/metapb"
-	"github.com/tikv/pd/pkg/mock/mockcluster"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/schedule"
-	"github.com/tikv/pd/server/schedule/placement"
+	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/schedule"
+	"github.com/qiaohao9/pd/server/schedule/placement"
 )
 
 var (

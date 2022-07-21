@@ -20,9 +20,9 @@ import (
 
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/log"
-	"github.com/tikv/pd/pkg/errs"
-	"github.com/tikv/pd/pkg/slice"
-	"github.com/tikv/pd/server/core/storelimit"
+	"github.com/qiaohao9/pd/pkg/errs"
+	"github.com/qiaohao9/pd/pkg/slice"
+	"github.com/qiaohao9/pd/server/core/storelimit"
 	"go.uber.org/zap"
 )
 
