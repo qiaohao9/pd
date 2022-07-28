@@ -31,18 +31,20 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
-	pd "github.com/tikv/pd/client"
-	"github.com/tikv/pd/pkg/assertutil"
-	"github.com/tikv/pd/pkg/mock/mockid"
-	"github.com/tikv/pd/pkg/testutil"
-	"github.com/tikv/pd/pkg/tsoutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/server/core"
-	"github.com/tikv/pd/server/storage/endpoint"
-	"github.com/tikv/pd/server/tso"
-	"github.com/tikv/pd/tests"
 	"go.uber.org/goleak"
+
+	pd "github.com/qiaohao9/pd/client"
+
+	"github.com/qiaohao9/pd/pkg/assertutil"
+	"github.com/qiaohao9/pd/pkg/mock/mockid"
+	"github.com/qiaohao9/pd/pkg/testutil"
+	"github.com/qiaohao9/pd/pkg/tsoutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/server/core"
+	"github.com/qiaohao9/pd/server/storage/endpoint"
+	"github.com/qiaohao9/pd/server/tso"
+	"github.com/qiaohao9/pd/tests"
 )
 
 const (
@@ -322,7 +324,7 @@ func (s *clientTestSuite) TestGlobalAndLocalTSO(c *C) {
 	requestGlobalAndLocalTSO(c, wg, dcLocationConfig, cli)
 
 	// assert global tso after resign leader
-	c.Assert(failpoint.Enable("github.com/tikv/pd/client/skipUpdateMember", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/client/skipUpdateMember", `return(true)`), IsNil)
 	err = cluster.ResignLeader()
 	c.Assert(err, IsNil)
 	cluster.WaitLeader()
@@ -331,7 +333,7 @@ func (s *clientTestSuite) TestGlobalAndLocalTSO(c *C) {
 	c.Assert(pd.IsLeaderChange(err), IsTrue)
 	_, _, err = cli.GetTS(s.ctx)
 	c.Assert(err, IsNil)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/client/skipUpdateMember"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/client/skipUpdateMember"), IsNil)
 
 	// Test the TSO follower proxy while enabling the Local TSO.
 	cli.UpdateOption(pd.EnableTSOFollowerProxy, true)
@@ -381,9 +383,9 @@ func (s *clientTestSuite) TestCustomTimeout(c *C) {
 	cli := setupCli(c, s.ctx, endpoints, pd.WithCustomTimeoutOption(1*time.Second))
 
 	start := time.Now()
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/customTimeout", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/customTimeout", "return(true)"), IsNil)
 	_, err = cli.GetAllStores(context.TODO())
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/customTimeout"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/customTimeout"), IsNil)
 	c.Assert(err, NotNil)
 	c.Assert(time.Since(start), GreaterEqual, 1*time.Second)
 	c.Assert(time.Since(start), Less, 2*time.Second)
@@ -398,13 +400,13 @@ func (s *clientTestSuite) TestGetRegionFromFollowerClient(c *C) {
 	endpoints := s.runServer(c, cluster)
 	cli := setupCli(c, s.ctx, endpoints, pd.WithForwardingOption(true))
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/client/unreachableNetwork1", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/client/unreachableNetwork1", "return(true)"), IsNil)
 	time.Sleep(200 * time.Millisecond)
 	r, err := cli.GetRegion(context.Background(), []byte("a"))
 	c.Assert(err, IsNil)
 	c.Assert(r, NotNil)
 
-	c.Assert(failpoint.Disable("github.com/tikv/pd/client/unreachableNetwork1"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/client/unreachableNetwork1"), IsNil)
 	time.Sleep(200 * time.Millisecond)
 	r, err = cli.GetRegion(context.Background(), []byte("a"))
 	c.Assert(err, IsNil)
@@ -421,7 +423,7 @@ func (s *clientTestSuite) TestGetTsoFromFollowerClient1(c *C) {
 	endpoints := s.runServer(c, cluster)
 	cli := setupCli(c, s.ctx, endpoints, pd.WithForwardingOption(true))
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/client/unreachableNetwork", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/client/unreachableNetwork", "return(true)"), IsNil)
 	var lastTS uint64
 	testutil.WaitUntil(c, func() bool {
 		physical, logical, err := cli.GetTS(context.TODO())
@@ -434,7 +436,7 @@ func (s *clientTestSuite) TestGetTsoFromFollowerClient1(c *C) {
 	})
 
 	lastTS = checkTS(c, cli, lastTS)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/client/unreachableNetwork"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/client/unreachableNetwork"), IsNil)
 	time.Sleep(2 * time.Second)
 	checkTS(c, cli, lastTS)
 }
@@ -449,7 +451,7 @@ func (s *clientTestSuite) TestGetTsoFromFollowerClient2(c *C) {
 	endpoints := s.runServer(c, cluster)
 	cli := setupCli(c, s.ctx, endpoints, pd.WithForwardingOption(true))
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/client/unreachableNetwork", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/client/unreachableNetwork", "return(true)"), IsNil)
 	var lastTS uint64
 	testutil.WaitUntil(c, func() bool {
 		physical, logical, err := cli.GetTS(context.TODO())
@@ -466,7 +468,7 @@ func (s *clientTestSuite) TestGetTsoFromFollowerClient2(c *C) {
 	cluster.WaitLeader()
 	lastTS = checkTS(c, cli, lastTS)
 
-	c.Assert(failpoint.Disable("github.com/tikv/pd/client/unreachableNetwork"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/client/unreachableNetwork"), IsNil)
 	time.Sleep(5 * time.Second)
 	checkTS(c, cli, lastTS)
 }

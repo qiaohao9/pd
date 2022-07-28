@@ -128,7 +128,7 @@ dashboard-replace-distro-info:
 
 #### Static tools ####
 
-PD_PKG := github.com/tikv/pd
+PD_PKG := github.com/qiaohao9/pd
 PACKAGES := $(shell go list ./...)
 
 GO_TOOLS_BIN_PATH := $(shell pwd)/.tools/bin
@@ -285,7 +285,7 @@ test-with-cover-parallel: install-tools dashboard-ui split
 
 split:
 # todo: it will remove server/api,/tests and tso packages after daily CI integrate all verify CI.
-	go list ./... | grep -v -E  "github.com/tikv/pd/server/api|github.com/tikv/pd/tests/client|github.com/tikv/pd/tests/server/tso" > packages.list;\
+	go list ./... | grep -v -E  "github.com/qiaohao9/pd/server/api|github.com/qiaohao9/pd/tests/client|github.com/qiaohao9/pd/tests/server/tso" > packages.list;\
 	split packages.list -n r/${TASK_COUNT} packages_unit_ -a 1 --numeric-suffixes=1;\
 	cat packages_unit_${TASK_ID} |tr "\n" " " >package.list;\
 	rm packages*;

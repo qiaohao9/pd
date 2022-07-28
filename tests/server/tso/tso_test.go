@@ -23,6 +23,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/grpcutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
@@ -67,7 +68,7 @@ func (s *testTSOSuite) TestLoadTimestamp(c *C) {
 
 	lastTSMap := requestLocalTSOs(c, cluster, dcLocationConfig)
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/systemTimeSlow", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/systemTimeSlow", `return(true)`), IsNil)
 
 	// Reboot the cluster.
 	err = cluster.StopAll()
@@ -86,7 +87,7 @@ func (s *testTSOSuite) TestLoadTimestamp(c *C) {
 		c.Assert(newTS.GetPhysical()-lastTS.GetPhysical(), Greater, int64(0))
 	}
 
-	failpoint.Disable("github.com/tikv/pd/server/tso/systemTimeSlow")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/systemTimeSlow")
 }
 
 func requestLocalTSOs(c *C, cluster *tests.TestCluster, dcLocationConfig map[string]string) map[string]*pdpb.Timestamp {

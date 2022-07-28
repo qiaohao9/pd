@@ -29,13 +29,14 @@ import (
 	"github.com/pingcap/errors"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+	"go.uber.org/goleak"
+
 	"github.com/qiaohao9/pd/pkg/assertutil"
 	"github.com/qiaohao9/pd/pkg/etcdutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/tests"
-	"go.uber.org/goleak"
 )
 
 func Test(t *testing.T) {
@@ -260,9 +261,9 @@ func (s *memberTestSuite) TestLeaderResignWithBlock(c *C) {
 	leader1 := cluster.WaitLeader()
 	addr1 := cluster.GetServer(leader1).GetConfig().ClientUrls
 
-	err = failpoint.Enable("github.com/tikv/pd/server/raftclusterIsBusy", `pause`)
+	err = failpoint.Enable("github.com/qiaohao9/pd/server/raftclusterIsBusy", `pause`)
 	c.Assert(err, IsNil)
-	defer failpoint.Disable("github.com/tikv/pd/server/raftclusterIsBusy")
+	defer failpoint.Disable("github.com/qiaohao9/pd/server/raftclusterIsBusy")
 	s.post(c, addr1+"/pd/api/v1/leader/resign", "")
 	leader2 := s.waitLeaderChange(c, cluster, leader1)
 	c.Log("leader2:", leader2)

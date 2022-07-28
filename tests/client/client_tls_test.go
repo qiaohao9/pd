@@ -24,13 +24,15 @@ import (
 	"time"
 
 	. "github.com/pingcap/check"
-	pd "github.com/tikv/pd/client"
-	"github.com/tikv/pd/pkg/grpcutil"
-	"github.com/tikv/pd/server"
-	"github.com/tikv/pd/server/config"
-	"github.com/tikv/pd/tests"
 	"go.etcd.io/etcd/pkg/transport"
 	"google.golang.org/grpc"
+
+	pd "github.com/qiaohao9/pd/client"
+
+	"github.com/qiaohao9/pd/pkg/grpcutil"
+	"github.com/qiaohao9/pd/server"
+	"github.com/qiaohao9/pd/server/config"
+	"github.com/qiaohao9/pd/tests"
 )
 
 var _ = Suite(&clientTLSTestSuite{})

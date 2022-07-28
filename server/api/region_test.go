@@ -28,6 +28,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/core"
 	"github.com/qiaohao9/pd/server/schedule/placement"
@@ -362,9 +363,9 @@ func (s *testRegionSuite) TestSplitRegions(c *C) {
 		c.Assert(s.ProcessedPercentage, Equals, 100)
 		c.Assert(s.NewRegionsID, DeepEquals, []uint64{newRegionID})
 	}
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/api/splitResponses", fmt.Sprintf("return(%v)", newRegionID)), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/api/splitResponses", fmt.Sprintf("return(%v)", newRegionID)), IsNil)
 	err := postJSON(testDialClient, fmt.Sprintf("%s/regions/split", s.urlPrefix), []byte(body), checkOpt)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/api/splitResponses"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/api/splitResponses"), IsNil)
 	c.Assert(err, IsNil)
 }
 
@@ -614,11 +615,11 @@ func (s *testRegionsReplicatedSuite) TestCheckRegionsReplicated(c *C) {
 	c.Assert(err, IsNil)
 	c.Assert(status, Equals, "REPLICATED")
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/api/mockPending", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/api/mockPending", "return(true)"), IsNil)
 	err = readJSON(testDialClient, url, &status)
 	c.Assert(err, IsNil)
 	c.Assert(status, Equals, "PENDING")
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/api/mockPending"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/api/mockPending"), IsNil)
 
 	// test multiple rules
 	r1 = newTestRegionInfo(2, 1, []byte("a"), []byte("b"))

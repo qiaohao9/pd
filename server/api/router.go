@@ -21,10 +21,11 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/pingcap/failpoint"
-	"github.com/qiaohao9/pd/pkg/audit"
-	"github.com/qiaohao9/pd/server"
 	"github.com/unrolled/render"
 	"github.com/urfave/negroni"
+
+	"github.com/qiaohao9/pd/pkg/audit"
+	"github.com/qiaohao9/pd/server"
 )
 
 // createRouteOption is used to register service for mux.Route
@@ -119,7 +120,7 @@ func (s *serviceMiddlewareBuilder) middlewareFunc(next func(http.ResponseWriter,
 // @version 1.0
 // @description This is placement driver.
 // @contact.name Placement Driver Support
-// @contact.url https://github.com/tikv/pd/issues
+// @contact.url https://github.com/qiaohao9/pd/issues
 // @contact.email info@pingcap.com
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html

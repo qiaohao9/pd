@@ -28,6 +28,13 @@ import (
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/log"
+	"go.etcd.io/etcd/clientv3"
+	"go.uber.org/zap"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
+
 	"github.com/qiaohao9/pd/pkg/errs"
 	"github.com/qiaohao9/pd/pkg/grpcutil"
 	"github.com/qiaohao9/pd/pkg/logutil"
@@ -38,12 +45,6 @@ import (
 	"github.com/qiaohao9/pd/server/storage/kv"
 	"github.com/qiaohao9/pd/server/tso"
 	"github.com/qiaohao9/pd/server/versioninfo"
-	"go.etcd.io/etcd/clientv3"
-	"go.uber.org/zap"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
 )
 
 // GrpcServer wraps Server to provide grpc service.
@@ -1598,7 +1599,7 @@ func (s *GrpcServer) GetDCLocationInfo(ctx context.Context, request *pdpb.GetDCL
 	//     t2: xxxxxxxxxxxxxxx | 111
 	// So we will force the newly added Local TSO Allocator to have a Global TSO synchronization
 	// when it becomes the Local TSO Allocator leader.
-	// Please take a look at https://github.com/tikv/pd/issues/3260 for more details.
+	// Please take a look at https://github.com/qiaohao9/pd/issues/3260 for more details.
 	if resp.MaxTs, err = am.GetMaxLocalTSO(ctx); err != nil {
 		return nil, status.Errorf(codes.Unknown, err.Error())
 	}

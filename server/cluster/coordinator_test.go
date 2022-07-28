@@ -26,6 +26,7 @@ import (
 	"github.com/pingcap/kvproto/pkg/eraftpb"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/mock/mockhbstream"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/pkg/typeutil"
@@ -157,7 +158,7 @@ type testCoordinatorSuite struct {
 
 func (s *testCoordinatorSuite) SetUpSuite(c *C) {
 	s.ctx, s.cancel = context.WithCancel(context.Background())
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 }
 
 func (s *testCoordinatorSuite) TearDownSuite(c *C) {
@@ -483,7 +484,7 @@ func (s *testCoordinatorSuite) TestCheckCache(c *C) {
 
 	// Add a peer with two replicas.
 	c.Assert(tc.addLeaderRegion(1, 2, 3), IsNil)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/cluster/break-patrol", `return`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/cluster/break-patrol", `return`), IsNil)
 
 	// case 1: operator cannot be created due to replica-schedule-limit restriction
 	co.wg.Add(1)
@@ -517,7 +518,7 @@ func (s *testCoordinatorSuite) TestCheckCache(c *C) {
 	c.Assert(co.checkers.GetWaitingRegions(), HasLen, 0)
 
 	co.wg.Wait()
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/cluster/break-patrol"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/cluster/break-patrol"), IsNil)
 }
 
 func (s *testCoordinatorSuite) TestPeerState(c *C) {
@@ -937,7 +938,7 @@ type testOperatorControllerSuite struct {
 
 func (s *testOperatorControllerSuite) SetUpSuite(c *C) {
 	s.ctx, s.cancel = context.WithCancel(context.Background())
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 }
 
 func (s *testOperatorControllerSuite) TearDownSuite(c *C) {
@@ -1108,7 +1109,7 @@ type testScheduleControllerSuite struct {
 
 func (s *testScheduleControllerSuite) SetUpSuite(c *C) {
 	s.ctx, s.cancel = context.WithCancel(context.Background())
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 }
 
 func (s *testScheduleControllerSuite) TearDownSuite(c *C) {

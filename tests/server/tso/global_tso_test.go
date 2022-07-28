@@ -26,6 +26,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/grpcutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
@@ -188,7 +189,7 @@ func (s *testNormalGlobalTSOSuite) TestDelaySyncTimestamp(c *C) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/delaySyncTimestamp", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/delaySyncTimestamp", `return(true)`), IsNil)
 
 	// Make the old leader resign and wait for the new leader to get a lease
 	leaderServer.ResignLeader()
@@ -203,5 +204,5 @@ func (s *testNormalGlobalTSOSuite) TestDelaySyncTimestamp(c *C) {
 	resp, err := tsoClient.Recv()
 	c.Assert(err, IsNil)
 	c.Assert(checkAndReturnTimestampResponse(c, req, resp), NotNil)
-	failpoint.Disable("github.com/tikv/pd/server/tso/delaySyncTimestamp")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/delaySyncTimestamp")
 }

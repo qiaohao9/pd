@@ -21,6 +21,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/cache"
 	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
 	"github.com/qiaohao9/pd/pkg/testutil"
@@ -525,7 +526,7 @@ func (s *testReplicaCheckerSuite) TestOpts(c *C) {
 	c.Assert(rc.Check(region), IsNil)
 }
 
-// See issue: https://github.com/tikv/pd/issues/3705
+// See issue: https://github.com/qiaohao9/pd/issues/3705
 func (s *testReplicaCheckerSuite) TestFixDownPeer(c *C) {
 	opt := config.NewTestOptions()
 	tc := mockcluster.NewCluster(s.ctx, opt)
@@ -556,7 +557,7 @@ func (s *testReplicaCheckerSuite) TestFixDownPeer(c *C) {
 	c.Assert(rc.Check(region), IsNil)
 }
 
-// See issue: https://github.com/tikv/pd/issues/3705
+// See issue: https://github.com/qiaohao9/pd/issues/3705
 func (s *testReplicaCheckerSuite) TestFixOfflinePeer(c *C) {
 	opt := config.NewTestOptions()
 	tc := mockcluster.NewCluster(s.ctx, opt)

@@ -27,6 +27,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/server/core"
@@ -49,7 +50,7 @@ type testOperatorControllerSuite struct {
 
 func (t *testOperatorControllerSuite) SetUpSuite(c *C) {
 	t.ctx, t.cancel = context.WithCancel(context.Background())
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 }
 
 func (t *testOperatorControllerSuite) TearDownSuite(c *C) {
@@ -186,7 +187,7 @@ func (t *testOperatorControllerSuite) TestFastFailWithUnhealthyStore(c *C) {
 }
 
 func (t *testOperatorControllerSuite) TestCheckAddUnexpectedStatus(c *C) {
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/schedule/unexpectedOperator"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator"), IsNil)
 	opt := config.NewTestOptions()
 	tc := mockcluster.NewCluster(t.ctx, opt)
 	stream := hbstream.NewTestHeartbeatStreams(t.ctx, tc.ID, tc, false /* no need to run */)
@@ -271,7 +272,7 @@ func (t *testOperatorControllerSuite) TestConcurrentRemoveOperator(c *C) {
 	c.Assert(op1.Start(), IsTrue)
 	oc.SetOperator(op1)
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/concurrentRemoveOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/concurrentRemoveOperator", "return(true)"), IsNil)
 
 	var wg sync.WaitGroup
 	wg.Add(2)

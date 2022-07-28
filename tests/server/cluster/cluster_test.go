@@ -27,6 +27,7 @@ import (
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
 	"github.com/pingcap/kvproto/pkg/replication_modepb"
+
 	"github.com/qiaohao9/pd/pkg/dashboard"
 	"github.com/qiaohao9/pd/pkg/mock/mockid"
 	"github.com/qiaohao9/pd/pkg/testutil"
@@ -374,7 +375,7 @@ func (s *clusterTestSuite) TestRaftClusterMultipleRestart(c *C) {
 	c.Assert(tc, NotNil)
 
 	// let the job run at small interval
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/highFrequencyClusterJobs", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/highFrequencyClusterJobs", `return(true)`), IsNil)
 	for i := 0; i < 100; i++ {
 		err = rc.Start(leaderServer.GetServer())
 		c.Assert(err, IsNil)
@@ -427,7 +428,7 @@ func (s *clusterTestSuite) TestStoreVersionChange(c *C) {
 	c.Assert(err, IsNil)
 	store := newMetaStore(storeID, "127.0.0.1:4", "2.1.0", metapb.StoreState_Up, getTestDeployPath(storeID))
 	var wg sync.WaitGroup
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/versionChangeConcurrency", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/versionChangeConcurrency", `return(true)`), IsNil)
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
@@ -440,7 +441,7 @@ func (s *clusterTestSuite) TestStoreVersionChange(c *C) {
 	v, err := semver.NewVersion("1.0.0")
 	c.Assert(err, IsNil)
 	c.Assert(svr.GetClusterVersion(), Equals, *v)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/versionChangeConcurrency"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/versionChangeConcurrency"), IsNil)
 }
 
 func (s *clusterTestSuite) TestConcurrentHandleRegion(c *C) {
@@ -607,7 +608,7 @@ func (s *clusterTestSuite) TestSetScheduleOpt(c *C) {
 	c.Assert(persistOptions.GetLabelPropertyConfig()[typ], HasLen, 0)
 
 	// PUT GET failed
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/storage/kv/etcdSaveFailed", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/storage/kv/etcdSaveFailed", `return(true)`), IsNil)
 	replicationCfg.MaxReplicas = 7
 	scheduleCfg.MaxSnapshotCount = 20
 	pdServerCfg.UseRegionStorage = false
@@ -623,15 +624,15 @@ func (s *clusterTestSuite) TestSetScheduleOpt(c *C) {
 	c.Assert(persistOptions.GetLabelPropertyConfig()[typ], HasLen, 0)
 
 	// DELETE failed
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/storage/kv/etcdSaveFailed"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/storage/kv/etcdSaveFailed"), IsNil)
 	c.Assert(svr.SetReplicationConfig(*replicationCfg), IsNil)
 
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/storage/kv/etcdSaveFailed", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/storage/kv/etcdSaveFailed", `return(true)`), IsNil)
 	c.Assert(svr.DeleteLabelProperty(typ, labelKey, labelValue), NotNil)
 
 	c.Assert(persistOptions.GetLabelPropertyConfig()[typ][0].Key, Equals, "testKey")
 	c.Assert(persistOptions.GetLabelPropertyConfig()[typ][0].Value, Equals, "testValue")
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/storage/kv/etcdSaveFailed"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/storage/kv/etcdSaveFailed"), IsNil)
 }
 
 func (s *clusterTestSuite) TestLoadClusterInfo(c *C) {

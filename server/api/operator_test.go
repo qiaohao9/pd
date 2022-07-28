@@ -27,6 +27,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/mock/mockhbstream"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
@@ -47,7 +48,7 @@ type testOperatorSuite struct {
 }
 
 func (s *testOperatorSuite) SetUpSuite(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 	s.svr, s.cleanup = mustNewServer(c, func(cfg *config.Config) { cfg.Replication.MaxReplicas = 1 })
 	mustWaitLeader(c, []*server.Server{s.svr})
 
@@ -163,7 +164,7 @@ type testTransferRegionOperatorSuite struct {
 }
 
 func (s *testTransferRegionOperatorSuite) SetUpSuite(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/unexpectedOperator", "return(true)"), IsNil)
 	s.svr, s.cleanup = mustNewServer(c, func(cfg *config.Config) { cfg.Replication.MaxReplicas = 3 })
 	mustWaitLeader(c, []*server.Server{s.svr})
 

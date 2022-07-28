@@ -19,6 +19,7 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
+
 	"github.com/qiaohao9/pd/pkg/codec"
 	"github.com/qiaohao9/pd/server/core"
 	"github.com/qiaohao9/pd/server/storage"
@@ -121,7 +122,7 @@ func (s *testManagerSuite) TestSaveLoad(c *C) {
 	c.Assert(m2.GetRule("foo", "bar").String(), Equals, rules[2].String())
 }
 
-// https://github.com/tikv/pd/issues/3886
+// https://github.com/qiaohao9/pd/issues/3886
 func (s *testManagerSuite) TestSetAfterGet(c *C) {
 	rule := s.manager.GetRule("pd", "default")
 	rule.Count = 1

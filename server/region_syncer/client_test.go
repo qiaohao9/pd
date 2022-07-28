@@ -23,6 +23,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/grpcutil"
 	"github.com/qiaohao9/pd/server/core"
 	"github.com/qiaohao9/pd/server/storage"
@@ -32,7 +33,7 @@ var _ = Suite(&testClientSuite{})
 
 type testClientSuite struct{}
 
-// For issue https://github.com/tikv/pd/issues/3936
+// For issue https://github.com/qiaohao9/pd/issues/3936
 func (t *testClientSuite) TestLoadRegion(c *C) {
 	tempDir, err := os.MkdirTemp(os.TempDir(), "region_syncer_load_region")
 	c.Assert(err, IsNil)
@@ -48,9 +49,9 @@ func (t *testClientSuite) TestLoadRegion(c *C) {
 	for i := 0; i < 30; i++ {
 		rs.SaveRegion(&metapb.Region{Id: uint64(i) + 1})
 	}
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/storage/base_backend/slowLoadRegion", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/storage/base_backend/slowLoadRegion", "return(true)"), IsNil)
 	defer func() {
-		c.Assert(failpoint.Disable("github.com/tikv/pd/server/storage/base_backend/slowLoadRegion"), IsNil)
+		c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/storage/base_backend/slowLoadRegion"), IsNil)
 	}()
 
 	rc := NewRegionSyncer(server)

@@ -20,6 +20,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/server/core"
@@ -497,7 +498,7 @@ func (s *testBuilderSuite) TestBuild(c *C) {
 			},
 		},
 		{
-			// issue: https://github.com/tikv/pd/issues/4411
+			// issue: https://github.com/qiaohao9/pd/issues/4411
 			"(enable JointConsensus) remove 1 voter from 2 voter replicas raft group",
 			true,
 			[]*metapb.Peer{{Id: 1, StoreId: 1}, {Id: 2, StoreId: 2}},
@@ -512,7 +513,7 @@ func (s *testBuilderSuite) TestBuild(c *C) {
 			},
 		},
 		{
-			// issue: https://github.com/tikv/pd/issues/4411
+			// issue: https://github.com/qiaohao9/pd/issues/4411
 			"(enable JointConsensus) remove 1 voter from 2 voter replicas raft group, with transfer leader",
 			true,
 			[]*metapb.Peer{{Id: 1, StoreId: 1}, {Id: 2, StoreId: 2}},

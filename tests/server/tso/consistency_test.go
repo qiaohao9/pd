@@ -25,6 +25,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/grpcutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/pkg/tsoutil"
@@ -229,14 +230,14 @@ func (s *testTSOConsistencySuite) TestSynchronizedGlobalTSOOverflow(c *C) {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/globalTSOOverflow", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/globalTSOOverflow", `return(true)`), IsNil)
 	s.getTimestampByDC(ctx, c, cluster, tsoCount, tso.GlobalDCLocation)
-	failpoint.Disable("github.com/tikv/pd/server/tso/globalTSOOverflow")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/globalTSOOverflow")
 }
 
 func (s *testTSOConsistencySuite) TestLocalAllocatorLeaderChange(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/mockLocalAllocatorLeaderChange", `return(true)`), IsNil)
-	defer failpoint.Disable("github.com/tikv/pd/server/mockLocalAllocatorLeaderChange")
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/mockLocalAllocatorLeaderChange", `return(true)`), IsNil)
+	defer failpoint.Disable("github.com/qiaohao9/pd/server/mockLocalAllocatorLeaderChange")
 	dcLocationConfig := map[string]string{
 		"pd1": "dc-1",
 	}
@@ -333,7 +334,7 @@ func (s *testTSOConsistencySuite) TestLocalTSOAfterMemberChanged(c *C) {
 	time.Sleep(time.Second * 5)
 
 	// Mock the situation that the system time of PD nodes in dc-4 is slower than others.
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/systemTimeSlow", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/systemTimeSlow", `return(true)`), IsNil)
 
 	// Join a new dc-location
 	pd4, err := cluster.Join(s.ctx, func(conf *config.Config, serverName string) {
@@ -351,7 +352,7 @@ func (s *testTSOConsistencySuite) TestLocalTSOAfterMemberChanged(c *C) {
 	})
 	s.testTSO(c, cluster, dcLocationConfig, previousTS)
 
-	failpoint.Disable("github.com/tikv/pd/server/tso/systemTimeSlow")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/systemTimeSlow")
 }
 
 func (s *testTSOConsistencySuite) testTSO(c *C, cluster *tests.TestCluster, dcLocationConfig map[string]string, previousTS *pdpb.Timestamp) {
@@ -403,7 +404,7 @@ func (s *testTSOConsistencySuite) testTSO(c *C, cluster *tests.TestCluster, dcLo
 	}
 	wg.Wait()
 
-	failpoint.Disable("github.com/tikv/pd/server/tso/systemTimeSlow")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/systemTimeSlow")
 }
 
 var _ = Suite(&testFallbackTSOConsistencySuite{})
@@ -418,8 +419,8 @@ type testFallbackTSOConsistencySuite struct {
 
 func (s *testFallbackTSOConsistencySuite) SetUpSuite(c *C) {
 	s.ctx, s.cancel = context.WithCancel(context.Background())
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/fallBackSync", `return(true)`), IsNil)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/fallBackUpdate", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/fallBackSync", `return(true)`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/fallBackUpdate", `return(true)`), IsNil)
 	var err error
 	s.cluster, err = tests.NewTestCluster(s.ctx, 1)
 	c.Assert(err, IsNil)
@@ -432,8 +433,8 @@ func (s *testFallbackTSOConsistencySuite) SetUpSuite(c *C) {
 	s.grpcPDClient = testutil.MustNewGrpcClient(c, s.server.GetAddr())
 	svr := s.server.GetServer()
 	svr.Close()
-	failpoint.Disable("github.com/tikv/pd/server/tso/fallBackSync")
-	failpoint.Disable("github.com/tikv/pd/server/tso/fallBackUpdate")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/fallBackSync")
+	failpoint.Disable("github.com/qiaohao9/pd/server/tso/fallBackUpdate")
 	err = svr.Run()
 	c.Assert(err, IsNil)
 	s.cluster.WaitLeader()

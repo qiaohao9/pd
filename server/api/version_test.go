@@ -24,6 +24,7 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
+
 	"github.com/qiaohao9/pd/pkg/assertutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
@@ -44,7 +45,7 @@ type testVersionSuite struct{}
 
 func (s *testVersionSuite) TestGetVersion(c *C) {
 	// TODO: enable it.
-	c.Skip("Temporary disable. See issue: https://github.com/tikv/pd/issues/1893")
+	c.Skip("Temporary disable. See issue: https://github.com/qiaohao9/pd/issues/1893")
 
 	fname := filepath.Join(os.TempDir(), "stdout")
 	old := os.Stdout
@@ -69,7 +70,7 @@ func (s *testVersionSuite) TestGetVersion(c *C) {
 	go func(cfg *config.Config) {
 		s, err := server.CreateServer(ctx, cfg, NewHandler)
 		c.Assert(err, IsNil)
-		c.Assert(failpoint.Enable("github.com/tikv/pd/server/memberNil", `return(true)`), IsNil)
+		c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/memberNil", `return(true)`), IsNil)
 		reqCh <- struct{}{}
 		err = s.Run()
 		c.Assert(err, IsNil)
@@ -90,5 +91,5 @@ func (s *testVersionSuite) TestGetVersion(c *C) {
 		cancel()
 		testutil.CleanServer(cfg.DataDir)
 	}()
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/memberNil"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/memberNil"), IsNil)
 }

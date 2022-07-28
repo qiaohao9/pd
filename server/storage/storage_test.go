@@ -26,9 +26,10 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
+	"go.etcd.io/etcd/clientv3"
+
 	"github.com/qiaohao9/pd/server/core"
 	"github.com/qiaohao9/pd/server/storage/endpoint"
-	"go.etcd.io/etcd/clientv3"
 )
 
 func TestStorage(t *testing.T) {
@@ -266,7 +267,7 @@ func (s *testStorageSuite) TestLoadRegionsToCache(c *C) {
 }
 
 func (s *testStorageSuite) TestLoadRegionsExceedRangeLimit(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/storage/kv/withRangeLimit", "return(500)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/storage/kv/withRangeLimit", "return(500)"), IsNil)
 	storage := NewStorageWithMemoryBackend()
 	cache := core.NewRegionsInfo()
 
@@ -277,5 +278,5 @@ func (s *testStorageSuite) TestLoadRegionsExceedRangeLimit(c *C) {
 	for _, region := range cache.GetMetaRegions() {
 		c.Assert(region, DeepEquals, regions[region.GetId()])
 	}
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/storage/kv/withRangeLimit"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/storage/kv/withRangeLimit"), IsNil)
 }

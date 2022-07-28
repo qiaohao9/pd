@@ -21,11 +21,12 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
+	"go.uber.org/goleak"
+
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/tests"
-	"go.uber.org/goleak"
 )
 
 func Test(t *testing.T) {
@@ -72,7 +73,7 @@ func (s *watchTestSuite) TestWatcher(c *C) {
 	time.Sleep(5 * time.Second)
 	pd3, err := cluster.Join(s.ctx)
 	c.Assert(err, IsNil)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/delayWatcher", `pause`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/delayWatcher", `pause`), IsNil)
 	err = pd3.Run()
 	c.Assert(err, IsNil)
 	time.Sleep(200 * time.Millisecond)
@@ -81,7 +82,7 @@ func (s *watchTestSuite) TestWatcher(c *C) {
 	c.Assert(err, IsNil)
 	cluster.WaitLeader()
 	c.Assert(pd2.GetLeader().GetName(), Equals, pd2.GetConfig().Name)
-	failpoint.Disable("github.com/tikv/pd/server/delayWatcher")
+	failpoint.Disable("github.com/qiaohao9/pd/server/delayWatcher")
 	testutil.WaitUntil(c, func() bool {
 		return c.Check(pd3.GetLeader().GetName(), Equals, pd2.GetConfig().Name)
 	})

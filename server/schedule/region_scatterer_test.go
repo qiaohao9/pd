@@ -24,6 +24,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
+
 	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/server/core"
@@ -392,7 +393,7 @@ func (s *testScatterRegionSuite) TestScattersGroup(c *C) {
 		c.Log(testcase.name)
 		failures := map[uint64]error{}
 		if testcase.failure {
-			c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/scatterFail", `return(true)`), IsNil)
+			c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/scatterFail", `return(true)`), IsNil)
 		}
 
 		scatterer.ScatterRegions(regions, failures, group, 3)
@@ -416,7 +417,7 @@ func (s *testScatterRegionSuite) TestScattersGroup(c *C) {
 			c.Assert(failures, HasLen, 1)
 			_, ok := failures[1]
 			c.Assert(ok, IsTrue)
-			c.Assert(failpoint.Disable("github.com/tikv/pd/server/schedule/scatterFail"), IsNil)
+			c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/schedule/scatterFail"), IsNil)
 		} else {
 			c.Assert(failures, HasLen, 0)
 		}
@@ -478,7 +479,7 @@ func (s *testScatterRegionSuite) TestRegionFromDifferentGroups(c *C) {
 }
 
 // TestSelectedStores tests if the peer count has changed due to the picking strategy.
-// Ref https://github.com/tikv/pd/issues/4565
+// Ref https://github.com/qiaohao9/pd/issues/4565
 func (s *testScatterRegionSuite) TestSelectedStores(c *C) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

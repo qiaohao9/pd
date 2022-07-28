@@ -29,13 +29,14 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/log"
+	"go.uber.org/goleak"
+
 	"github.com/qiaohao9/pd/pkg/apiutil/serverapi"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/pkg/typeutil"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/tests"
-	"go.uber.org/goleak"
 )
 
 // dialClient used to dial http request.
@@ -125,7 +126,7 @@ type testMiddlewareSuite struct {
 }
 
 func (s *testMiddlewareSuite) SetUpSuite(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/api/enableFailpointAPI", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/api/enableFailpointAPI", "return(true)"), IsNil)
 	ctx, cancel := context.WithCancel(context.Background())
 	server.EnableZap = true
 	s.cleanup = cancel
@@ -137,13 +138,13 @@ func (s *testMiddlewareSuite) SetUpSuite(c *C) {
 }
 
 func (s *testMiddlewareSuite) TearDownSuite(c *C) {
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/api/enableFailpointAPI"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/api/enableFailpointAPI"), IsNil)
 	s.cleanup()
 	s.cluster.Destroy()
 }
 
 func (s *testMiddlewareSuite) TestRequestInfoMiddleware(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/api/addRequestInfoMiddleware", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/api/addRequestInfoMiddleware", "return(true)"), IsNil)
 	leader := s.cluster.GetServer(s.cluster.GetLeader())
 
 	req, _ := http.NewRequest("POST", leader.GetAddr()+"/pd/api/v1/admin/audit-middleware?enable=true", nil)
@@ -178,7 +179,7 @@ func (s *testMiddlewareSuite) TestRequestInfoMiddleware(c *C) {
 	header := mustRequestSuccess(c, leader.GetServer())
 	c.Assert(header.Get("service-label"), Equals, "")
 
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/api/addRequestInfoMiddleware"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/api/addRequestInfoMiddleware"), IsNil)
 }
 
 func BenchmarkDoRequestWithServiceMiddleware(b *testing.B) {
@@ -228,7 +229,7 @@ func doTestRequest(srv *tests.TestServer) {
 }
 
 func (s *testMiddlewareSuite) TestAuditMiddleware(c *C) {
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/api/addAuditMiddleware", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/api/addAuditMiddleware", "return(true)"), IsNil)
 	leader := s.cluster.GetServer(s.cluster.GetLeader())
 
 	req, _ := http.NewRequest("POST", leader.GetAddr()+"/pd/api/v1/admin/audit-middleware?enable=true", nil)
@@ -261,7 +262,7 @@ func (s *testMiddlewareSuite) TestAuditMiddleware(c *C) {
 	c.Assert(resp.StatusCode, Equals, http.StatusOK)
 	c.Assert(resp.Header.Get("audit-label"), Equals, "")
 
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/api/addAuditMiddleware"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/api/addAuditMiddleware"), IsNil)
 }
 
 func (s *testMiddlewareSuite) TestAuditPrometheusBackend(c *C) {

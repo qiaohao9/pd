@@ -27,6 +27,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/errs"
 	"github.com/qiaohao9/pd/pkg/mock/mockid"
 	"github.com/qiaohao9/pd/server/config"
@@ -684,13 +685,13 @@ func (s *testClusterInfoSuite) TestConcurrentRegionHeartbeat(c *C) {
 
 	var wg sync.WaitGroup
 	wg.Add(1)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/cluster/concurrentRegionHeartbeat", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/cluster/concurrentRegionHeartbeat", "return(true)"), IsNil)
 	go func() {
 		defer wg.Done()
 		cluster.processRegionHeartbeat(source)
 	}()
 	time.Sleep(100 * time.Millisecond)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/cluster/concurrentRegionHeartbeat"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/cluster/concurrentRegionHeartbeat"), IsNil)
 	c.Assert(cluster.processRegionHeartbeat(target), IsNil)
 	wg.Wait()
 	checkRegion(c, cluster.GetRegionByKey([]byte{}), target)

@@ -24,13 +24,14 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
+	"go.etcd.io/etcd/clientv3"
+
 	"github.com/qiaohao9/pd/pkg/etcdutil"
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
 	"github.com/qiaohao9/pd/server/tso"
 	"github.com/qiaohao9/pd/tests"
-	"go.etcd.io/etcd/clientv3"
 )
 
 var _ = Suite(&testManagerSuite{})
@@ -171,7 +172,7 @@ func (s *testManagerSuite) TestNextLeaderKey(c *C) {
 	})
 	defer cluster.Destroy()
 	c.Assert(err, IsNil)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/tso/injectNextLeaderKey", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/tso/injectNextLeaderKey", "return(true)"), IsNil)
 	err = cluster.RunInitialServers()
 	c.Assert(err, IsNil)
 
@@ -180,7 +181,7 @@ func (s *testManagerSuite) TestNextLeaderKey(c *C) {
 	cluster.CheckClusterDCLocation()
 	originName := cluster.WaitAllocatorLeader("dc-1", tests.WithRetryTimes(5), tests.WithWaitInterval(5*time.Second))
 	c.Assert(originName, Equals, "")
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/tso/injectNextLeaderKey"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/tso/injectNextLeaderKey"), IsNil)
 	cluster.CheckClusterDCLocation()
 	originName = cluster.WaitAllocatorLeader("dc-1")
 	c.Assert(originName, Not(Equals), "")

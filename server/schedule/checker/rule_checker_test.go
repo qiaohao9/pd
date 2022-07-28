@@ -21,6 +21,7 @@ import (
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
 	"github.com/pingcap/kvproto/pkg/pdpb"
+
 	"github.com/qiaohao9/pd/pkg/cache"
 	"github.com/qiaohao9/pd/pkg/mock/mockcluster"
 	"github.com/qiaohao9/pd/pkg/testutil"
@@ -378,7 +379,7 @@ func (s *testRuleCheckerSuite) TestIssue2419(c *C) {
 	c.Assert(op.Step(2).(operator.RemovePeer).FromStore, Equals, uint64(3))
 }
 
-// Ref https://github.com/tikv/pd/issues/3521
+// Ref https://github.com/qiaohao9/pd/issues/3521
 // The problem is when offline a store, we may add learner multiple times if
 // the operator is timeout.
 func (s *testRuleCheckerSuite) TestPriorityFixOrphanPeer(c *C) {
@@ -539,7 +540,7 @@ func (s *testRuleCheckerSuite) TestIssue3299(c *C) {
 	}
 }
 
-// See issue: https://github.com/tikv/pd/issues/3705
+// See issue: https://github.com/qiaohao9/pd/issues/3705
 func (s *testRuleCheckerSuite) TestFixDownPeer(c *C) {
 	s.cluster.AddLabelsStore(1, 1, map[string]string{"zone": "z1"})
 	s.cluster.AddLabelsStore(2, 1, map[string]string{"zone": "z1"})
@@ -575,7 +576,7 @@ func (s *testRuleCheckerSuite) TestFixDownPeer(c *C) {
 	c.Assert(s.rc.Check(region), IsNil)
 }
 
-// See issue: https://github.com/tikv/pd/issues/3705
+// See issue: https://github.com/qiaohao9/pd/issues/3705
 func (s *testRuleCheckerSuite) TestFixOfflinePeer(c *C) {
 	s.cluster.AddLabelsStore(1, 1, map[string]string{"zone": "z1"})
 	s.cluster.AddLabelsStore(2, 1, map[string]string{"zone": "z1"})
@@ -671,18 +672,18 @@ func (s *testRuleCheckerSerialSuite) TestRuleCache(c *C) {
 	for _, testcase := range testcases {
 		c.Log(testcase.name)
 		if testcase.stillCached {
-			c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/checker/assertShouldCache", "return(true)"), IsNil)
+			c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/checker/assertShouldCache", "return(true)"), IsNil)
 			s.rc.Check(testcase.region)
-			c.Assert(failpoint.Disable("github.com/tikv/pd/server/schedule/checker/assertShouldCache"), IsNil)
+			c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/schedule/checker/assertShouldCache"), IsNil)
 		} else {
-			c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedule/checker/assertShouldNotCache", "return(true)"), IsNil)
+			c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedule/checker/assertShouldNotCache", "return(true)"), IsNil)
 			s.rc.Check(testcase.region)
-			c.Assert(failpoint.Disable("github.com/tikv/pd/server/schedule/checker/assertShouldNotCache"), IsNil)
+			c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/schedule/checker/assertShouldNotCache"), IsNil)
 		}
 	}
 }
 
-// Ref https://github.com/tikv/pd/issues/4045
+// Ref https://github.com/qiaohao9/pd/issues/4045
 func (s *testRuleCheckerSuite) TestSkipFixOrphanPeerIfSelectedPeerisPendingOrDown(c *C) {
 	s.cluster.AddLabelsStore(1, 1, map[string]string{"host": "host1"})
 	s.cluster.AddLabelsStore(2, 1, map[string]string{"host": "host1"})
@@ -756,7 +757,7 @@ func (s *testRuleCheckerSuite) TestPriorityFitHealthPeers(c *C) {
 	c.Assert(op.Desc(), Equals, "remove-orphan-peer")
 }
 
-// Ref https://github.com/tikv/pd/issues/4140
+// Ref https://github.com/qiaohao9/pd/issues/4140
 func (s *testRuleCheckerSuite) TestDemoteVoter(c *C) {
 	s.cluster.AddLabelsStore(1, 1, map[string]string{"zone": "z1"})
 	s.cluster.AddLabelsStore(4, 1, map[string]string{"zone": "z4"})

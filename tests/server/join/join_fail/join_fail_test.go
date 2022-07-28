@@ -21,10 +21,11 @@ import (
 
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
+	"go.uber.org/goleak"
+
 	"github.com/qiaohao9/pd/pkg/testutil"
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/tests"
-	"go.uber.org/goleak"
 )
 
 func Test(t *testing.T) {
@@ -55,9 +56,9 @@ func (s *joinTestSuite) TestFailedPDJoinInStep1(c *C) {
 	cluster.WaitLeader()
 
 	// Join the second PD.
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/join/add-member-failed", `return`), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/join/add-member-failed", `return`), IsNil)
 	_, err = cluster.Join(ctx)
 	c.Assert(err, NotNil)
 	c.Assert(strings.Contains(err.Error(), "join failed"), IsTrue)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/join/add-member-failed"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/join/add-member-failed"), IsNil)
 }

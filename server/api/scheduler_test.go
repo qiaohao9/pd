@@ -22,6 +22,7 @@ import (
 	. "github.com/pingcap/check"
 	"github.com/pingcap/failpoint"
 	"github.com/pingcap/kvproto/pkg/metapb"
+
 	"github.com/qiaohao9/pd/server"
 	"github.com/qiaohao9/pd/server/config"
 	_ "github.com/qiaohao9/pd/server/schedulers"
@@ -70,13 +71,13 @@ func (s *testScheduleSuite) TestOriginAPI(c *C) {
 	input1["store_id"] = 2
 	body, err = json.Marshal(input1)
 	c.Assert(err, IsNil)
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/schedulers/persistFail", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/schedulers/persistFail", "return(true)"), IsNil)
 	c.Assert(postJSON(testDialClient, addURL, body), NotNil)
 	c.Assert(rc.GetSchedulers(), HasLen, 1)
 	resp = make(map[string]interface{})
 	c.Assert(readJSON(testDialClient, listURL, &resp), IsNil)
 	c.Assert(resp["store-id-ranges"], HasLen, 1)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/schedulers/persistFail"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/schedulers/persistFail"), IsNil)
 	c.Assert(postJSON(testDialClient, addURL, body), IsNil)
 	c.Assert(rc.GetSchedulers(), HasLen, 1)
 	resp = make(map[string]interface{})
@@ -90,12 +91,12 @@ func (s *testScheduleSuite) TestOriginAPI(c *C) {
 	c.Assert(readJSON(testDialClient, listURL, &resp1), IsNil)
 	c.Assert(resp1["store-id-ranges"], HasLen, 1)
 	deleteURL = fmt.Sprintf("%s/%s", s.urlPrefix, "evict-leader-scheduler-2")
-	c.Assert(failpoint.Enable("github.com/tikv/pd/server/config/persistFail", "return(true)"), IsNil)
+	c.Assert(failpoint.Enable("github.com/qiaohao9/pd/server/config/persistFail", "return(true)"), IsNil)
 	statusCode, err := doDelete(testDialClient, deleteURL)
 	c.Assert(err, IsNil)
 	c.Assert(statusCode, Equals, 500)
 	c.Assert(rc.GetSchedulers(), HasLen, 1)
-	c.Assert(failpoint.Disable("github.com/tikv/pd/server/config/persistFail"), IsNil)
+	c.Assert(failpoint.Disable("github.com/qiaohao9/pd/server/config/persistFail"), IsNil)
 	statusCode, err = doDelete(testDialClient, deleteURL)
 	c.Assert(err, IsNil)
 	c.Assert(statusCode, Equals, 200)
