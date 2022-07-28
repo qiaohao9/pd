@@ -37,7 +37,7 @@ import (
 
 const (
 	globalDCLocation     = "global"
-	memberUpdateInterval = 3 * time.Second
+	memberUpdateInterval = 2 * time.Second
 )
 
 // baseClient is a basic client for all other complex client.
