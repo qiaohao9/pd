@@ -18,7 +18,7 @@ import (
 	"time"
 
 	. "github.com/pingcap/check"
-	"github.com/tikv/pd/client/testutil"
+	"github.com/qiaohao9/pd/client/testutil"
 )
 
 var _ = Suite(&testClientOptionSuite{})

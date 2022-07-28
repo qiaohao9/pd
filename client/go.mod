@@ -1,4 +1,4 @@
-module github.com/tikv/pd/client
+module github.com/qiaohao9/pd/client
 
 go 1.16
 

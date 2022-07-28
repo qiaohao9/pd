@@ -30,9 +30,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	"github.com/tikv/pd/client/errs"
-	"github.com/tikv/pd/client/grpcutil"
-	"github.com/tikv/pd/client/tlsutil"
+	"github.com/qiaohao9/pd/client/errs"
+	"github.com/qiaohao9/pd/client/grpcutil"
+	"github.com/qiaohao9/pd/client/tlsutil"
 )
 
 const (
